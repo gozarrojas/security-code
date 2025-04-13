@@ -1,0 +1,17 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "Instalando Terraform"
+  pre_build:
+    commands:
+      - terraform init
+      - terraform validate
+  build:
+    commands:
+      - terraform plan -var-file="terraform.tfvars"
+
+artifacts:
+  files:
+    - '**/*'
